@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     path: redis
-    repoURL: https://bitbucket.org/cloudee/kube-install-argocd-demo.git
+    repoURL: https://github.com/entigolabs/kube-install-argocd-demo.git
     targetRevision: HEAD
     helm:
       parameters:
