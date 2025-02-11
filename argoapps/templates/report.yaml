@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: report
+  namespace: argocd
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: report
+  project: default
+  source:
+    path: report
+    repoURL: https://bitbucket.org/cloudee/kube-install-argocd-demo.git
+    targetRevision: HEAD
+    helm:
+      parameters:
+      - name: image.repository
+        value: {{ .Values.registry }}
+      - name: report.ingress
+        value: web.{{ .Values.user }}-install.learn.entigo.io
+      - name: feedback
+        value: {{ .Values.feedback }}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true 

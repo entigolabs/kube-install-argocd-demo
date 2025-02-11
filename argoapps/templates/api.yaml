@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: api
+  namespace: argocd
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: api
+  project: default
+  source:
+    path: api
+    repoURL: https://bitbucket.org/cloudee/kube-install-argocd-demo.git
+    targetRevision: HEAD
+    helm:
+      parameters:
+      - name: image.repository
+        value: {{ .Values.registry }}
+      - name: api.ingress
+        value: web.{{ .Values.user }}-install.learn.entigo.io
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true 

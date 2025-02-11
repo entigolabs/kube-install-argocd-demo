@@ -1,0 +1,8 @@
+# Default values for entigo-training-application.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+repository: registry.learn.entigo.io/hub/
+subdomain: uN-install.learn.entigo.io
+feedback: https://forms.gle/yDxUCe3GQNY4iB2RA
+

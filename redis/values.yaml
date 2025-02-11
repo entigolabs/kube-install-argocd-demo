@@ -1,0 +1,14 @@
+# Default values for entigo-training-application.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+image:
+  repository: ireg.learn.entigo.io/hub/
+  pullPolicy: IfNotPresent
+
+redis:  
+  diskSize: 5Gi
+  diskType: rook-ceph-block
+  image: library/redis:6
+
+
